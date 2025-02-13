@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My baby Aqilah</title>
+    <style>
+        body {
+            background-color: #f0e6f6;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+            color: #a14cb3;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .heart {
+            font-size: 100px;
+            color: #e15f95;
+            animation: heartBeat 1.5s infinite;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #a14cb3;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e15f95;
+        }
+        #noButton {
+            position: relative;
+            transition: 0.3s;
+        }
+        #yesButton {
+            z-index: 1;
+        }
+        #message {
+            font-size: 30px;
+            color: #a14cb3;
+            display: none;
+        }
+        .cat {
+            font-size: 150px;
+            animation: wave 1s infinite;
+            display: none;
+        }
+        @keyframes wave {
+            0% { transform: rotate(0); }
+            25% { transform: rotate(15deg); }
+            50% { transform: rotate(0); }
+            75% { transform: rotate(-15deg); }
+            100% { transform: rotate(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Will you be my Valentine?</h1>
+    <div class="heart">💖</div>
+    <div class="button-container">
+        <button id="yesButton" onclick="showMessage()">Yes!</button>
+        <button id="noButton" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No!</button>
+    </div>
+    <div id="message" class="hidden">
+        <h2>Yeayyy, see you later cayang! 💕</h2>
+        <div class="cat">🐱👋</div>
+    </div>
+
+    <script>
+        let noButtonMovementDistance = 100; 
+
+        function moveNoButton() {
+            const noButton = document.getElementById('noButton');
+            const randomX = Math.floor(Math.random() * noButtonMovementDistance) - noButtonMovementDistance / 2; 
+            const randomY = Math.floor(Math.random() * noButtonMovementDistance) - noButtonMovementDistance / 2; 
+            noButton.style.transform = translate(${randomX}px, ${randomY}px);
+
+            
+            noButtonMovementDistance += 20;
+        }
+
+        function showMessage() {
+            
+            document.getElementById('question').style.display = 'none';
+            document.querySelector('.button-container').style.display = 'none';
+            document.getElementById('message').style.display = 'block';
+            document.querySelector('.cat').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
